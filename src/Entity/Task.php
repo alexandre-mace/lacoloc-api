@@ -53,6 +53,12 @@ class Task
      */
     private $addedBy;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Home::class, inversedBy="tasks")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $home;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -138,6 +144,18 @@ class Task
     public function setAddedBy(?User $addedBy): self
     {
         $this->addedBy = $addedBy;
+
+        return $this;
+    }
+
+    public function getHome(): ?Home
+    {
+        return $this->home;
+    }
+
+    public function setHome(?Home $home): self
+    {
+        $this->home = $home;
 
         return $this;
     }
