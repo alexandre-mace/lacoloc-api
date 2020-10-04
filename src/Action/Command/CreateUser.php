@@ -35,6 +35,8 @@ class CreateUser
         }
 
         $user = $safeSerializer->safeDeserialize($userDto, User::class, 'object', [], new User());
+        $home->addUser($user);
+
         $entityManager->persist($user);
         $entityManager->flush();
 
